@@ -2,11 +2,11 @@ require('dotenv').config()
 const express = require('express'),
       massive = require('massive'),
       session = require('express-session'),
-      ctrl = require('./controller'),
-      prod = require('./products.js'),
-      email = require('./email'),
       pg = require('pg'),
-      pgSession= require('connect-pg-simple')(session)
+      pgSession= require('connect-pg-simple')(session),
+      ctrl = require('./controllers/auth')
+    //   prod = require('./controllers/products'),
+    //   email = require('./controllers/email'),
 
 const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env
 
@@ -23,13 +23,13 @@ app.use(session({
         pool: pgPool
     }),
     secret: SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
+    resave: true,
+    saveUninitialized: false,
     cookie: {
         maxAge: 1000000
     }
 }))
-    
+
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db)
 
@@ -43,8 +43,8 @@ massive(CONNECTION_STRING).then(db => {
 
 app.post('/auth/login', ctrl.login)
 app.post('/auth/register', ctrl.register)
-// app.get('/auth/isLoggedIn', ctrl.loggedIn)
-// app.post('/auth/logout', ctrl.logout)
+app.get('/auth/authorized', ctrl.authorized)
+app.post('/auth/logout', ctrl.logout)
 
 // // products controllers
 

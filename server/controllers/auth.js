@@ -3,9 +3,8 @@ const bcrypt = require('bcryptjs')
 module.exports = {
     login: async (req, res) => {
         const {email, password} = req.body
-        const db = req.app.get('db')
         const {session} = req
-        
+        const db = req.app.get('db')
 
         let user = await db.login({email})
         user = user[0]
@@ -26,7 +25,6 @@ module.exports = {
     },
     register: async (req,res) => {
         const {username, email, password, admin} = req.body
-        const {session} = req
         const db = req.app.get('db')
 
         let takenEmail = await db.check_email({email})
@@ -41,7 +39,19 @@ module.exports = {
 
         let user = await db.create_user({username, email, password:hash, admin})
         user = user[0]
-        session.user = user
-        res.status(200).send(session.user)
-    }
+        res.status(200).send(user)
+    },
+    authorized: (req, res) => { 
+        const {user} = req.session
+        if (user) {
+            res.status(200).send(user)
+        } else {
+            res.sendStatus(401)
+        }
+    },
+    logout: (req, res) => {
+        req.session.destroy(function () {
+            res.sendStatus(200)
+        })
+    },
 }

@@ -2,7 +2,7 @@
     background: rgb(224, 221, 221);
     height: 5vh;
     width: 100%;
-    position: fixed;
+    /* position: fixed; */
     padding: 5px;
     display: flex;
     justify-content: space-between;
@@ -10,32 +10,19 @@
     }
 
 .nav_home_button {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    }
+    align-self: center; 
+}
 
 .nav_brand {
     position: absolute;
-    width: 100%;
-    z-index: -1;
-}
-
-.nav_brand a {
-    width: fit-content;
-    display: block;
-    margin: 0 auto;
+    margin-top: 0;
+    margin-left: 47%
 }
 
 .nav_menu_items {
-    display: flex;
     flex-direction: row;
-	flex-wrap: nowrap;
-	align-items: center;
-    align-content: stretch;
-    padding-right: 1%;
     }
+
 .nav_menu_items button {
     margin-left: 5px;
 }
