@@ -1,0 +1,31 @@
+.Product {
+    border:2px solid black;
+    width: 300px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-around;
+    margin: 5px;
+    padding-top:5px;
+
+}
+.product_container{
+    overflow: auto;
+}
+.product_container img{
+    width: 250px;
+    height: 250px;
+}
+
+.product_container h1 {
+    font-size: 30px;
+    margin: 7px;
+    overflow: auto;
+}
+.product_container p{
+    margin: 7px
+}
+.product_container button{
+    margin: 10px 20px;
+}

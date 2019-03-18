@@ -4,8 +4,8 @@ const express = require('express'),
       session = require('express-session'),
       pg = require('pg'),
       pgSession= require('connect-pg-simple')(session),
-      ctrl = require('./controllers/auth')
-    //   prod = require('./controllers/products'),
+      ctrl = require('./controllers/auth'),
+      prod = require('./controllers/products')
     //   email = require('./controllers/email'),
 
 const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env
@@ -48,11 +48,11 @@ app.post('/auth/logout', ctrl.logout)
 
 // // products controllers
 
-// app.get('/products/viewAllProducts', prod.viewAll)
+app.get('/products/viewAllProducts', prod.viewAll)
 // app.get('/products/viewProduct', prod.viewProduct)
-// app.get('/products/searchProducts', prod.searchProducts)
+// app.get('/products/searchProducts', prod.getProducts)
 // app.get('/products/searchByCategory', prod.searchByCategory)
-// app.post('/products/createProduct', prod.createProd)
+app.post('/products/createProduct', prod.createProduct)
 // app.delete('/products/deleteProduct', prod.deleteProducts)
 // app.put('/products/updateProductDesc', prod.updateProdDesc)
 // app.put('/products/updateProductPicture', prod.updateProdPic)

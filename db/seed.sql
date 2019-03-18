@@ -1,3 +1,5 @@
+-- user table
+
 CREATE TABLE users(
     user_id SERIAL PRIMARY KEY,
     username VARCHAR(20),
@@ -5,6 +7,8 @@ CREATE TABLE users(
     password VARCHAR,
     admin BOOLEAN
 )
+
+-- product list table
 
 CREATE TABLE products(
     prod_id SERIAL PRIMARY KEY,
@@ -15,11 +19,14 @@ CREATE TABLE products(
     image_url TEXT
 )
 
+-- email list table
+
 CREATE TABLE email_list(
     email_id SERIAL PRIMARY KEY,
     email VARCHAR,
     subscribed BOOLEAN
 )
+-- session creator
 
 CREATE TABLE "session" (
  "sid" varchar NOT NULL COLLATE "default",
@@ -28,3 +35,15 @@ CREATE TABLE "session" (
 )
 WITH (OIDS=FALSE);
 ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
+
+-- create new product
+
+INSERT INTO products (category, sub_category, image_url, product_name, product_desc)
+VALUES
+(${category}, ${sub_category}, ${image_url}, ${product_name}, ${product_desc})
+
+-- create new user
+
+INSERT INTO users (username, email, password, admin)
+VALUES
+(${username}, ${email}, ${password}, ${admin})
