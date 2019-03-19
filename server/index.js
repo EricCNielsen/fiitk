@@ -4,11 +4,12 @@ const express = require('express'),
       session = require('express-session'),
       pg = require('pg'),
       pgSession= require('connect-pg-simple')(session),
+      aws = require('aws-sdk'),
       ctrl = require('./controllers/auth'),
       prod = require('./controllers/products')
     //   email = require('./controllers/email'),
 
-const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env
+const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET, S3_BUCKET, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY} = process.env
 
 const app = express()
 
@@ -48,17 +49,51 @@ app.post('/auth/logout', ctrl.logout)
 
 // // products controllers
 
-app.get('/products/viewAllProducts', prod.viewAll)
-// app.get('/products/viewProduct', prod.viewProduct)
-// app.get('/products/searchProducts', prod.getProducts)
-// app.get('/products/searchByCategory', prod.searchByCategory)
-app.post('/products/createProduct', prod.createProduct)
-// app.delete('/products/deleteProduct', prod.deleteProducts)
-// app.put('/products/updateProductDesc', prod.updateProdDesc)
-// app.put('/products/updateProductPicture', prod.updateProdPic)
-// app.put('/products/updateProductName', prod.updateProdName)
+app.get('/api/viewAllProducts', prod.viewAll)
+app.get('/api/product/:id', prod.getProduct)
+app.post('/api/createProduct', prod.createProduct)
+app.delete('/api/product/:id', prod.deleteProduct)
+// app.put('/api/updateProductDesc', prod.updateProdDesc)
+// app.put('/api/updateProductPicture', prod.updateProdPic)
+// app.put('/api/updateProductName', prod.updateProdName)
 
 // // email controllers
 
 // app.post('/email/emailSignUp', email.signUp)
 // app.post('/email/checkEmail', email.checkEmail)
+
+// // aws end point
+
+app.get('/sign-s3', (req, res) => {
+
+  aws.config = {
+    region: 'us-west-1',
+    accessKeyId: AWS_ACCESS_KEY_ID,
+    secretAccessKey: AWS_SECRET_ACCESS_KEY
+  }
+  
+  const s3 = new aws.S3();
+  const fileName = req.query['file-name'];
+  const fileType = req.query['file-type'];
+  const s3Params = {
+    Bucket: S3_BUCKET,
+    Key: fileName,
+    Expires: 60,
+    ContentType: fileType,
+    ACL: 'public-read'
+  };
+
+  s3.getSignedUrl('putObject', s3Params, (err, data) => {
+    if(err){
+      console.log(err);
+      return res.end();
+    }
+    const returnData = {
+      signedRequest: data,
+      url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
+    };
+
+    console.log(returnData)
+    return res.send(returnData)
+  });
+});

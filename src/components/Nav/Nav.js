@@ -7,6 +7,12 @@ import './Nav.css'
 
 
 class Nav extends Component{
+        componentDidUpdate(prevProps) {
+            if(prevProps !== this.props) {
+                this.checkUser()
+            }
+        }
+
         componentDidMount() {
         this.checkUser()
     }
@@ -33,19 +39,19 @@ class Nav extends Component{
     }
 
     render() {
-        const {user_id} = this.props
+        const {user_id, username} = this.props
         if (user_id) {
             return (
             <div className="Nav">
                 <div className="nav_home_button">
-                    <Link to="/dashboard"><button>Home</button></Link>
+                    <Link to="/"><button>Home</button></Link>
                 </div>
                 <div className="nav_brand">
-                    <a href="/dashboard">Org Name</a>
+                    <h1>Welcome, {username}!!!</h1>
                 </div>
                 <div className="nav_menu_items">
                     <Link to='/dashboard'><button>Dashboard</button></Link>
-                    <Link to ='/edit'><button>Edit Items</button></Link>
+                    <Link to ='/dashboard/edit'><button>Edit Items</button></Link>
                 </div>
             </div> 
             )
@@ -73,7 +79,8 @@ class Nav extends Component{
 
 function mapStateToProps(state) {
     return{
-        user_id: state.user_id
+        user_id: state.user_id,
+        username: state.username
     }
 }
 

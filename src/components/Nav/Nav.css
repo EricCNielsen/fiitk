@@ -7,6 +7,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin:
     }
 
 .nav_home_button {
@@ -16,11 +17,12 @@
 .nav_brand {
     position: absolute;
     margin-top: 0;
-    margin-left: 47%
+    margin-left: 46%
 }
 
 .nav_menu_items {
     flex-direction: row;
+    margin: 0px 15px;
     }
 
 .nav_menu_items button {

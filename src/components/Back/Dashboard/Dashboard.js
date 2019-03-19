@@ -57,12 +57,44 @@ class Dashboard extends Component{
         'file-type': file.type
       }
     }).then( (response) => {
+      console.log(response)
       const { signedRequest, url } = response.data 
       this.uploadFile(file, signedRequest, url)
     }).catch( err => {
       console.log(err)
     })
   }
+
+  uploadFile = (file, signedRequest, url) => {
+    const options = {
+      headers: {
+        'Content-Type': file.type,
+      },
+    };
+    this.setState({
+      image_url: url
+    })
+    axios
+    .put(signedRequest, file, options)
+    .then(response => { console.log(response)
+      this.setState({ isUploading: false, url });
+      // axios.post('/api/createProduct', product)
+    })
+    .catch(err => {
+      this.setState({
+        isUploading: false,
+      });
+      if (err.response.status === 403) {
+        alert(
+          `Your request for a signed URL failed with a status 403. Double check the CORS configuration and bucket policy in the README. You also will want to double check your AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in your .env and ensure that they are the same as the ones that you created in the IAM dashboard. You may need to generate new keys\n${
+            err.stack
+          }`
+        );
+      } else {
+        alert(`ERROR: ${err.status}\n ${err.stack}`);
+      }
+    });
+};
 
   onDrop = (acceptedFiles) => { 
     console.log(acceptedFiles)
@@ -103,7 +135,7 @@ handleSubmit = async () => { console.log('hit on submit!')
     product_name: this.state.product_name,
     product_desc: this.state.product_desc,
   }
-  try { let res = await axios.post('/products/createProduct', product)
+  try { let res = await axios.post('/api/createProduct', product)
   this.props.updateUser(res.data)
   this.setState({
     user_id: 0,
@@ -136,7 +168,7 @@ handleSubmit = async () => { console.log('hit on submit!')
         <form className='dashboard_inputs'>
           <Dropzone 
             style={{border: 'solid ', padding:'50px', borderRadius:'25px'}}
-            onDrop={this.onDrop}
+            onDrop={this.getSignedRequest}
             accept='image/*'
             multiple={false} >
             

@@ -17,11 +17,30 @@ module.exports = {
     viewAll: (req, res) => {
         const db = req.app.get('db')
         db.get_products().then(resp => {
-            console.log(resp)
             res.send(resp)
         }).catch((err) => {
             console.log(err)
         })
+    },
+    deleteProduct: (req, res) => {
+        const db = req.app.get('db')
+        const{id} = req.params
+
+        db.delete_product([id]).then(resp => {
+            res.status(200).send(resp)
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).send(err)
+        })
+    },
+    getProduct: (req, res) => {
+        const db = req.app.get('db')
+        const {id} = req.params
+        
+        db.get_product([id]).then(resp => {
+            res.status(200).send(resp)
+        }) .catch(err => res.status(500).send(err))
     }
     
     

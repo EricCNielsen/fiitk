@@ -17,7 +17,7 @@ export default (
         <Route path="/specialtyitems" component={Specialty} />
         <Route path="/contact" component={Contact} />
         <Route path="/login" component={Login} />
+        <Route path="/dashboard/edit" component={Edit} />
         <Route path="/dashboard" component={Dashboard} />
-        <Route path="/edit" component={Edit} />
     </Switch>
 )
