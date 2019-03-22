@@ -57,11 +57,11 @@
     font-weight:bold;
     font-size:15px;
   }
+  
   .line {
     height: 98%;
     width: 5px;
     color: black;
     position: absolute;
     border: solid;
-
-}
+  }

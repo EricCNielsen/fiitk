@@ -1,10 +1,11 @@
 import React from 'react'
+import './Dropdown.css'
 
 export default function Dropdown(props) {
     const{
         options,
         onChange,
-        selectedValue
+        selectedValue,
     } = props
     let selectOptions = null
 
@@ -15,7 +16,7 @@ export default function Dropdown(props) {
     }
 
     return (
-        <select onChange={ onChange } value={ selectedValue } disabled= { !Array.isArray(options) } >
+        <select className='Dropdown' onChange={ onChange } value={ selectedValue } disabled= { !Array.isArray(options) } >
             <option value="">-- Select --</option>
             {selectOptions}
         </select>

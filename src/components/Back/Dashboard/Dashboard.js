@@ -18,10 +18,13 @@ class Dashboard extends Component{
     isUploading: false,
     product_name: 'Item Name',
     product_desc: 'Item description',
-    file: {},
     category: '',
     sub_category: '',
-    loading: true
+    loading: true,
+    signedRequest: '',
+    file: {},
+    url: '',
+
   }
   
     
@@ -57,9 +60,13 @@ class Dashboard extends Component{
         'file-type': file.type
       }
     }).then( (response) => {
-      console.log(response)
       const { signedRequest, url } = response.data 
-      this.uploadFile(file, signedRequest, url)
+      this.setState({
+        file,
+        signedRequest,
+        url,
+        image_url: file.preview
+      }) 
     }).catch( err => {
       console.log(err)
     })
@@ -76,10 +83,13 @@ class Dashboard extends Component{
     })
     axios
     .put(signedRequest, file, options)
-    .then(response => { console.log(response)
-      this.setState({ isUploading: false, url });
-      // axios.post('/api/createProduct', product)
-    })
+    .then(response => {
+      this.setState({ 
+        isUploading: false,
+        url
+      })
+      alert('Upload Successful');
+        })
     .catch(err => {
       this.setState({
         isUploading: false,
@@ -95,6 +105,8 @@ class Dashboard extends Component{
       }
     });
 };
+
+  
 
   onDrop = (acceptedFiles) => { 
     console.log(acceptedFiles)
@@ -126,28 +138,31 @@ handleCancel = () => {
   window.location.reload()
 }
 
-handleSubmit = async () => { console.log('hit on submit!')
+handleSubmit = async () => {
+  this.uploadFile(this.state.file, this.state.signedRequest, this.state.image_url)
   let product = {
     user_id: this.props.user_id,
     category: this.state.category,
     sub_category: this.state.sub_category,
-    image_url: this.state.image_url,
+    image_url: this.state.url,
     product_name: this.state.product_name,
     product_desc: this.state.product_desc,
   }
   try { let res = await axios.post('/api/createProduct', product)
   this.props.updateUser(res.data)
+  // this.handleCancel()
   this.setState({
     user_id: 0,
     category: '',
     sub_category: '',
     image_url: '',
-    product_name: '',
-    product_desc: ''
+    product_name: 'Item Name',
+    product_desc: 'Item description'
   })
   } catch(err) {
       alert('Something went wrong')
     }
+
 }
   
   render(){ 
@@ -166,38 +181,39 @@ handleSubmit = async () => { console.log('hit on submit!')
       <div className="Dashboard"> 
         <h1 className='dashboard_title'>Dashboard</h1>
         <form className='dashboard_inputs'>
-          <Dropzone 
-            style={{border: 'solid ', padding:'50px', borderRadius:'25px'}}
-            onDrop={this.getSignedRequest}
-            accept='image/*'
-            multiple={false} >
-            
-            { this.state.isUploading 
-                ?  <Spinner name="ball-grid-beat" />
-                : <p style={{fontSize: '12px'}}>Drop File or Click Here</p>
-              }
-          </Dropzone>
-
-          <Dropdown options={ MAIN_CATEGORY_OPTIONS} onChange={(e) => this.handleChange("category", e.target.value) } selectedValue={ category } />
-          
-
-          <Dropdown options={ SUB_CATEGORY_OPTIONS_OBJECT [category] } onChange={(e) => this.handleChange("sub_category", e.target.value) } selectedValue={ sub_category } />
-
-          <p><input placeholder="item name" onChange={(e) => this.handleChange("product_name",e.target.value)}/></p>
-          <p><input placeholder="item description" onChange={(e) => this.handleChange("product_desc",e.target.value)} style={{}}/></p>
+          <div className='dropzone'>
+              <Dropzone 
+                style={{padding:'30px'}}
+                onDrop={this.getSignedRequest}
+                accept='image/*'
+                multiple={false} >
+                
+                { this.state.isUploading 
+                    ?  <Spinner name="ball-grid-beat" className='dropzone_spinner'/>
+                    : <p style={{fontSize: '12px'}}>Drop File<br/> or <br/>Click Here</p>
+                      
+                  }
+              </Dropzone>
+            </div>
+            <div className='dropdown_box'>
+              <Dropdown options={ MAIN_CATEGORY_OPTIONS} onChange={(e) => this.handleChange("category", e.target.value) } selectedValue={ category } />
+              <Dropdown options={ SUB_CATEGORY_OPTIONS_OBJECT [category] } onChange={(e) => this.handleChange("sub_category", e.target.value) } selectedValue={ sub_category } />
+            </div>
+          <p><input placeholder={this.state.product_name} onChange={(e) => this.handleChange("product_name",e.target.value)}/></p>
+          <p><input placeholder={this.state.product_desc} onChange={(e) => this.handleChange("product_desc",e.target.value)}/></p>
 
 
         </form>
-        <div className='line'></div>
+        <div className='dashboard_line'></div>
 
         <div className='dashboard_example'>
           <img src={this.state.image_url ? this.state.image_url : 'https://imgplaceholder.com/420x320/ff7f7f/333333/fa-image'} style={{width:'300px', height:'300px'}}/>
-          <p>{category} || {sub_category}</p>
+          <p className='dashboard_example_categories'>{category} || {sub_category}</p>
           <h1>{this.state.product_name}</h1>
-          <p>{this.state.product_desc}</p>
+          <p className="dashboard_example_desc">{this.state.product_desc}</p>
           <div className='login_buttons'>
             <button onClick={this.handleSubmit}>submit</button>
-            <button onClick={this.handleCancel}>cancel</button> 
+            <button onClick={this.handleCancel}>cancel</button>
           </div>
         </div>
       </div>

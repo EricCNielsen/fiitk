@@ -79,8 +79,8 @@ class Nav extends Component{
 
 function mapStateToProps(state) {
     return{
-        user_id: state.user_id,
-        username: state.username
+        user_id: state.reducer.user_id,
+        username: state.reducer.username
     }
 }
 

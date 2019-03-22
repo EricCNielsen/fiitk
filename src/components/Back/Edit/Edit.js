@@ -5,6 +5,10 @@ import './Edit.css'
 import {updateUser} from './../../../ducks/reducer'
 import {connect} from 'react-redux'
 import Popup from './Popup/Popup'
+import { v4 as randomString } from 'uuid'
+import {updateProd} from './../../../ducks/prodReducer'
+
+
 
 class Edit extends Component{
     constructor (props){
@@ -14,10 +18,11 @@ class Edit extends Component{
             products: [],
             userInput: '',
             loading: true,
-            id: 0,
+            id: this.props.id,
             editing: false,
             showPopup: false,
-            product: {}
+            product: {},
+
         }
         this.deleteProd=this.deleteProd.bind(this)
         this.togglePopup=this.togglePopup.bind(this)
@@ -26,6 +31,7 @@ class Edit extends Component{
     componentDidMount() {
         this.checkUser()
         this.getProducts()
+
     }
   
     checkUser = async () => { 
@@ -43,6 +49,8 @@ class Edit extends Component{
       }
     }
 
+
+
     getProducts(){ 
         axios.get('/api/viewAllProducts').then(res => {
             this.setState({
@@ -50,6 +58,8 @@ class Edit extends Component{
             })
         })
     }
+
+
 
     handleChange(prop, val) {
         this.setState({
@@ -70,11 +80,14 @@ class Edit extends Component{
     }
 
     togglePopup(id) {
+
         axios.get(`/api/product/${id}`).then(res => {
             this.setState({
                 showPopup: !this.state.showPopup,
-                product: res.data[0]
+                product: res.data[0],
             })
+            this.props.updateProd(res.data[0])
+            console.log('togglePopup data',res.data)
         })
     }
     popup() {
@@ -82,16 +95,27 @@ class Edit extends Component{
         showPopup: !this.state.showPopup
       });
     }
+    
+    refreshPage = () => {
+        window.location.reload()
+    }
 
-    // setEdit(id){
-    //     const {product_name, product_desc, image_url, category, sub_category} = this.state
 
-        
-    // }
+    updateProduct = async() => {
+        const {id, product_name, image_url, category, sub_category, product_desc} = this.props
+        let res = await axios.put(`/api/updateProduct/${id}`, {image_url, category, sub_category, product_name, product_desc})
+            this.setState({
+                products: res.data,
+                showPopup: !this.state.showPopup
+            })
+            this.refreshPage()
+    
+    }
 
     render(){
         let mappedProducts = this.state.products
-        .filter(e => e.product_name.toLowerCase().includes(this.state.userInput.toLowerCase())) 
+        .filter(e => e.product_name.toLowerCase().includes(this.state.userInput.toLowerCase())|| e.category.toLowerCase().includes(this.state.userInput.toLowerCase())
+        || e.sub_category.toLowerCase().includes(this.state.userInput.toLowerCase()))
         .map((product, i) => {
             return ( 
             <div key={i}>
@@ -128,12 +152,10 @@ class Edit extends Component{
                      {this.state.showPopup ?  
                         (
                          <Popup
-                            product_name={this.state.product.product_name}
-                            image_url={this.state.product.image_url}
-                            category={this.state.product.category}
-                            sub_category={this.state.product.sub_category}
-                            product_desc={this.state.product.product_desc}
+                            updateProduct={this.updateProduct.bind(this)}
                             closePopup={this.popup.bind(this)}
+                            togglePopup={this.togglePopup}
+                            product={this.state.product}
                          />
                         )
                         : null 
@@ -152,9 +174,16 @@ class Edit extends Component{
 
 function mapStateToProps (state) {
     return {
-        user_id: state.user_id
+        user_id: state.reducer.user_id,
+        id: state.prodReducer.id,
+        category: state.prodReducer.category,
+        sub_category: state.prodReducer.sub_category,
+        image_url: state.prodReducer.image_url,
+        product_name: state.prodReducer.product_name,
+        product_desc: state.prodReducer.product_desc
+
     }
 }
 
-export default connect(mapStateToProps, {updateUser}) (Edit)
+export default connect(mapStateToProps, {updateUser, updateProd}) (Edit)
 

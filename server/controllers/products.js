@@ -41,6 +41,28 @@ module.exports = {
         db.get_product([id]).then(resp => {
             res.status(200).send(resp)
         }) .catch(err => res.status(500).send(err))
+    },
+    getCakes: (req, res) => {
+        const db = req.app.get('db')
+
+        db.front_end.get_cakes().then(resp => {
+            res.status(200).send(resp)
+        }) .catch(err => res.status(500).send(err))
+    },
+    updateProduct: (req, res) => {
+        const db = req.app.get('db')
+        const {image_url, category, sub_category, product_name, product_desc} = req.body
+        const {id} = req.params
+
+        db.update_product([id, image_url, category, sub_category, product_name, product_desc])
+            .then(resp => {
+                res.status(200).send(resp)
+            })
+            
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
     }
     
     

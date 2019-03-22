@@ -16,6 +16,22 @@
     height: 6%
     }
 
+.dropzone {
+    width:30%;
+    height: 25%;
+    position: relative;
+    left: 33%;
+    border: 2px solid black;
+    border-radius: 25px;
+    padding-top: 20px;
+    cursor: pointer;
+}
+.dropzone_spinner {
+    position:relative;
+    left: 20%;
+    margin-top: -8%;
+}
+
 .dashboard_inputs {
     width:100%;
     height:85vh;
@@ -24,7 +40,6 @@
     flex-direction: column;
     margin-top: 50px;
     justify-content: space-around;
-    /* background:yellow; */
     }
 .dashboard_inputs input {
     width: 93%;
@@ -32,6 +47,10 @@
     margin: 8px 0;
     }
 
+.dropdown_box {
+    position: relative;
+    margin: 12px;
+    }
 
 .dashboard_example {
     width:100%;
@@ -42,7 +61,6 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    /* background:red; */
     overflow:auto;
     }
 
@@ -54,7 +72,12 @@
     font-size: 25px;
     }
     
-.dashboard_example p {
+.dashboard_example_categories{
+    padding: 1%;
+    width:80%;
+    font-size: 20px
+}
+.dashboard_example_desc {
     width: 80%;
     height:10vh;
     word-wrap: break-word;    
@@ -67,8 +90,8 @@
     object-fit: cover;
     }
 
-.line {
-    height: 90vh;
+.dashboard_line {
+    height: 91.5%;
     width: 5px;
     color: black;
     position: absolute;

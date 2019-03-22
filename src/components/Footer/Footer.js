@@ -45,9 +45,9 @@ class Footer extends Component {
     }
 }
 
-function mapStateToProps ({user_id}) {
+function mapStateToProps (state) {
     return {
-        user_id
+        user_id: state.reducer.user_id
     }
 }
 

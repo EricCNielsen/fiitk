@@ -53,9 +53,8 @@ app.get('/api/viewAllProducts', prod.viewAll)
 app.get('/api/product/:id', prod.getProduct)
 app.post('/api/createProduct', prod.createProduct)
 app.delete('/api/product/:id', prod.deleteProduct)
-// app.put('/api/updateProductDesc', prod.updateProdDesc)
-// app.put('/api/updateProductPicture', prod.updateProdPic)
-// app.put('/api/updateProductName', prod.updateProdName)
+app.put('/api/updateProduct/:id', prod.updateProduct)
+app.get('/api/products/cakes', prod.getCakes)
 
 // // email controllers
 
@@ -93,7 +92,7 @@ app.get('/sign-s3', (req, res) => {
       url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
     };
 
-    console.log(returnData)
+    console.log(111, returnData)
     return res.send(returnData)
   });
 });

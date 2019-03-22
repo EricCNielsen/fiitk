@@ -1,5 +1,5 @@
 const initialState = {
-    user_id: 0,
+    id: 0,
     category: '',
     sub_category: '',
     image_url: '',
@@ -9,20 +9,28 @@ const initialState = {
 
 const UPDATE_PROD = 'UPDATE_PROD'
 
-export function updateProd(prod){
+
+export function updateProd({id, product_name, image_url, category, sub_category, product_desc}){
     return {
         type: UPDATE_PROD,
-        payload: prod
+        payload: {
+            id,
+            product_name, 
+            image_url, 
+            category, 
+            sub_category, 
+            product_desc
+        }
     }
 }
 
 export default function reducer(state = initialState, action){
     const {type, payload} = action
-
+    
     switch(type){
         case UPDATE_PROD:
-            const{user_id, category, sub_category, image_url, product_name, product_desc} = payload
-            return{...state, user_id, category, sub_category, image_url, product_name, product_desc}
+            const{id, category, sub_category, image_url, product_name, product_desc} = payload
+            return{...state, id, category, sub_category, image_url, product_name, product_desc}
         default:
             return state
     }
