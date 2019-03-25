@@ -152,7 +152,7 @@ class Popup extends Component {
             <form className='popup_inputs'>
             <div className='dropzone'>
               <Dropzone 
-                style={{padding:'15px', background:'yellow'}}
+                style={{padding:'15px'}}
                 onDrop={this.getSignedRequest}
                 accept='image/*'
                 multiple={false} 
