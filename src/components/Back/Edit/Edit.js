@@ -141,10 +141,11 @@ class Edit extends Component{
         }
         return (
             <div>
-                <h1>Edit Page</h1>
-
-                <div>
-                    <input type="text" onChange={e => this.handleInput(e.target.value)}></input>
+                <div className="edit_title">
+                    <h1>Edit Page</h1>
+                    
+                        <input type="text" placeholder="Search for product here..." onChange={e => this.handleInput(e.target.value)}></input>
+                    
                 </div>
                 <div>
                     <div className="Products">

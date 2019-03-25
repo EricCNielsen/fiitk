@@ -4,6 +4,7 @@
     width: 100%;
     padding: 5px;
     display: flex;
+    flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
     }
@@ -14,8 +15,17 @@
 
 .nav_brand {
     position: absolute;
-    margin-top: 0;
-    margin-left: 46%
+    top:0;
+    left:0;
+    margin: 15px
+
+}
+
+.nav_welcome_user{
+    position: absolute;
+    left: 44%;
+    margin-top:15px;
+    font-size: 20px;
 }
 
 .nav_menu_items {

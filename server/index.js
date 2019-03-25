@@ -55,6 +55,7 @@ app.post('/api/createProduct', prod.createProduct)
 app.delete('/api/product/:id', prod.deleteProduct)
 app.put('/api/updateProduct/:id', prod.updateProduct)
 app.get('/api/products/cakes', prod.getCakes)
+app.get('/api/products/cupcakes', prod.getCupcakes)
 
 // // email controllers
 

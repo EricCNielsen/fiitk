@@ -1,4 +1,4 @@
-.Cakes {
+.Cupcakes {
     /* background:blue; */
     width: 98%;
     margin: 5px;
@@ -11,13 +11,13 @@
 	align-content: stretch;
 
 }
-.cake_title{
+.cupcake_title{
     font-size: 80px;
     font-family: 'Bad Script', cursive;
     text-decoration: underline;
     margin-top:2vh
 }
-.cake_thumbnails {
+.cupcake_thumbnails {
     /* background:lightblue; */
     width: 90vw;
     display: flex;
@@ -25,7 +25,7 @@
     align-items: center;
     margin-top:-10vh
 }
-.cake_thumbnails img {
+.cupcake_thumbnails img {
     border: 7px solid black;
     /* background: green; */
     width:305px;
@@ -33,7 +33,7 @@
     margin: 20px;
     border-radius: 50%;
 }
-.cake_thumbnails h1{
+.cupcake_thumbnails h1{
     font-size: 25px;
     margin-top:-20px;
     color: black

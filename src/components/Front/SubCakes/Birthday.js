@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import Frontproduct from './../Frontproduct/Frontproduct'
-import './Frontproducts.css'
+import '../Frontproducts.css'
 
 class BirthdayCakes extends Component{
     state= {

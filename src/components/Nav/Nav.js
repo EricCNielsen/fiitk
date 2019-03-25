@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {updateUser} from './../../ducks/reducer'
 import axios from 'axios'
 import './Nav.css'
+import logo from '../../assets/images/lily-makes-it.png'
 
 
 class Nav extends Component{
@@ -42,27 +43,25 @@ class Nav extends Component{
         const {user_id, username} = this.props
         if (user_id) {
             return (
+                <div >
+                    <h1 className="nav_welcome_user">Welcome, {username}!!!</h1>
+                
             <div className="Nav">
-                <div className="nav_home_button">
-                    <Link to="/"><button>Home</button></Link>
-                </div>
                 <div className="nav_brand">
-                    <h1>Welcome, {username}!!!</h1>
+                <Link to='/'><img src={logo} /></Link>
                 </div>
                 <div className="nav_menu_items">
                     <Link to='/dashboard'><button>Dashboard</button></Link>
                     <Link to ='/dashboard/edit'><button>Edit Items</button></Link>
                 </div>
+            </div>
             </div> 
             )
         } else {
         return (
             <div className="Nav">
-                <div className="nav_home_button">
-                    <Link to="/"><button>Home</button></Link>
-                </div>
                 <div className="nav_brand">
-                    <a href="/">Org Name</a>
+                    <Link to='/'><img src={logo} /></Link>
                 </div>
                 <div className="nav_menu_items">
                     <Link to ='/cakes'><button>Cakes</button></Link>
@@ -70,7 +69,8 @@ class Nav extends Component{
                     <Link to='/specialty'><button>Specialty</button></Link>
                     <Link to='/contact'><button>Contact</button></Link>
                 </div>
-            </div> 
+            </div>
+             
         )
     }
 }

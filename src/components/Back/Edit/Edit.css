@@ -1,3 +1,23 @@
+.edit_title {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: stretch;
+  }
+
+.edit_title h1{
+  font-size:30px;
+  margin-top:10px;
+  margin-bottom: 10px;
+}
+.edit_title input{
+  height: 5vh;
+  width: 30vw;
+  margin-bottom: 10px
+}
+
 .Products {
 	display: flex;
 	flex-direction: row;
@@ -9,6 +29,7 @@
 	height:fit-content;
 	padding-bottom: 7vh;
 }
+
 
 .product {
 

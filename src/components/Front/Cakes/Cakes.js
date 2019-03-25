@@ -3,7 +3,7 @@ import axios from 'axios'
 import {Link} from 'react-router-dom'
 import weddingCake from '../../../assets/images/wedding-cake-main.jpg'
 import birthdayCake from '../../../assets/images/elsa-birthday.jpg'
-import specialCake from '../../../assets/images/Stashes-or-Lashes.jpg'
+import specialCake from '../../../assets/images/staches-or-lashes.png'
 import './Cakes.css'
 
 class Cakes extends Component{
@@ -26,18 +26,20 @@ class Cakes extends Component{
     render(){
 
         return (
-        
-            <div className='Cakes'>
-                <div className='cake_thumbnails'>
-                    <div>
-                        <Link to='/cakes/wedding'><img src={weddingCake} alt='wedding cake main' /><h1>Wedding Cakes</h1></Link>
-                        
-                    </div>
-                    <div>
-                        <Link to='/cakes/birthday'><img src={birthdayCake} alt='birthday cake main'/><h1>Birthday Cakes</h1></Link>
-                    </div>
-                    <div>
-                        <Link to='/cakes/special'><img src={specialCake} alt='birthday cake main'/><h1>Special Events</h1></Link>
+            <div>
+                <h1 className="cake_title">Cakes</h1>
+                <div className='Cakes'>
+                    <div className='cake_thumbnails'>
+                        <div>
+                            <Link to='/cakes/wedding'><img src={weddingCake} alt='wedding cake main' /><h1>Wedding Cakes</h1></Link>
+                            
+                        </div>
+                        <div>
+                            <Link to='/cakes/birthday'><img src={birthdayCake} alt='birthday cake main'/><h1>Birthday Cakes</h1></Link>
+                        </div>
+                        <div>
+                            <Link to='/cakes/special'><img src={specialCake} alt='birthday cake main'/><h1>Special Events</h1></Link>
+                        </div>
                     </div>
                 </div>
             </div>

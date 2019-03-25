@@ -11,6 +11,8 @@ import Edit from './components/Back/Edit/Edit'
 import WeddingCakes from './components/Front/SubCakes/Wedding';
 import BirthdayCakes from './components/Front/SubCakes/Birthday';
 import SpecialCakes from './components/Front/SubCakes/SpecialOrder';
+import SimpleCupcakes from './components/Front/SubCupcakes/Simplecupcakes';
+
 
 export default (
     <Switch>
@@ -25,5 +27,7 @@ export default (
         <Route path="/cakes/birthday" component={BirthdayCakes} />
         <Route path="/cakes/special" component={SpecialCakes} />
         <Route path="/cakes" component={Cakes} />
+        <Route path="/cupcakes/simple" component={SimpleCupcakes} />
+        <Route path="/cupcakes" component={Cupcakes} />
     </Switch>
 )

@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import Frontproduct from './../Frontproduct/Frontproduct'
-import '../Frontproducts.css'
+import './Frontproducts.css'
 
-class SpecialtyCakes extends Component{
+class WeddingCakes extends Component{
     state= {
         products:[]
     }
@@ -23,7 +23,7 @@ class SpecialtyCakes extends Component{
     render(){
         console.log(111, this.state.products)
         let mappedProducts = this.state.products
-        .filter(e => e.sub_category.includes("Special Order"))
+        .filter(e => e.sub_category.includes("Wedding"))
         .map((product, i) => {
             return(
                 <div key={i}>
@@ -42,7 +42,7 @@ class SpecialtyCakes extends Component{
         return (
             <div>
                 <div>
-                    <h1>Special Order Cakes</h1> 
+                    <h1>Wedding Cakes</h1> 
 
                 </div>
                 <div className="Frontproducts">
@@ -53,4 +53,4 @@ class SpecialtyCakes extends Component{
     }
 }
 
-export default SpecialtyCakes
+export default WeddingCakes

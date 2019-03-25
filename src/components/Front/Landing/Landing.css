@@ -1,0 +1,15 @@
+.Landing {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+}
+.Landing_container {
+    max-width: 50vw;
+    margin: 5px
+}
+.Landing img {
+    border: 7px solid black;
+    height: 85vh;
+    border-radius: 50%;
+}

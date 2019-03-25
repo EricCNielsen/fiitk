@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import Frontproduct from './../Frontproduct/Frontproduct'
-import './Frontproducts.css'
+import '../Frontproducts.css'
 
 class WeddingCakes extends Component{
     state= {
@@ -21,7 +21,6 @@ class WeddingCakes extends Component{
     }
 
     render(){
-        console.log(111, this.state.products)
         let mappedProducts = this.state.products
         .filter(e => e.sub_category.includes("Wedding"))
         .map((product, i) => {
