@@ -5,7 +5,7 @@
   margin: 0;
   box-sizing: border-box;
   position: relative;
-  min-height: 100vh
+  min-height: 98vh
 }
 
 input[type=file] {

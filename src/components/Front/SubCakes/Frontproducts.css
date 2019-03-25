@@ -1,0 +1,11 @@
+.Frontproducts {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: stretch;
+  align-content: space-around;
+	margin:7px;
+	height:fit-content;
+	padding-bottom: 7vh;
+}

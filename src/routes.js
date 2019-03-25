@@ -8,16 +8,22 @@ import Contact from './components/Front/Contact/Contact'
 import Login from './components/Back/Login/Login'
 import Dashboard from './components/Back/Dashboard/Dashboard';
 import Edit from './components/Back/Edit/Edit'
+import WeddingCakes from './components/Front/SubCakes/Wedding';
+import BirthdayCakes from './components/Front/SubCakes/Birthday';
+import SpecialCakes from './components/Front/SubCakes/SpecialOrder';
 
 export default (
     <Switch>
         <Route exact path="/" component={Landing} />
-        <Route path="/cakes" component={Cakes} />
         <Route path="/cupcakes" component={Cupcakes} />
         <Route path="/specialtyitems" component={Specialty} />
         <Route path="/contact" component={Contact} />
         <Route path="/login" component={Login} />
         <Route path="/dashboard/edit" component={Edit} />
         <Route path="/dashboard" component={Dashboard} />
+        <Route path="/cakes/wedding" component={WeddingCakes} />
+        <Route path="/cakes/birthday" component={BirthdayCakes} />
+        <Route path="/cakes/special" component={SpecialCakes} />
+        <Route path="/cakes" component={Cakes} />
     </Switch>
 )

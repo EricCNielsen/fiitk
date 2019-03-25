@@ -3,14 +3,10 @@ import axios from 'axios'
 import './../Dashboard/Dashboard.css'
 import {updateUser} from './../../../ducks/reducer'
 import {connect} from 'react-redux'
-
 import { v4 as randomString } from 'uuid'
 import Dropzone from 'react-dropzone'
 import Spinner from 'react-spinkit'
 import Dropdown from './Dropdown/Dropdown'
-// import Spinner from './Photoupload/Spinner'
-// import Images from './Photoupload/Images'
-// import Buttons from './Photoupload/Buttons'
 
 class Dashboard extends Component{
   state={
@@ -150,7 +146,6 @@ handleSubmit = async () => {
   }
   try { let res = await axios.post('/api/createProduct', product)
   this.props.updateUser(res.data)
-  // this.handleCancel()
   this.setState({
     user_id: 0,
     category: '',

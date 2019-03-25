@@ -1,13 +1,11 @@
 .Nav {
     background: rgb(224, 221, 221);
-    height: 5vh;
+    height: 7vh;
     width: 100%;
-    /* position: fixed; */
     padding: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin:
     }
 
 .nav_home_button {

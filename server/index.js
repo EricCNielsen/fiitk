@@ -96,3 +96,7 @@ app.get('/sign-s3', (req, res) => {
     return res.send(returnData)
   });
 });
+
+// connect to live server
+
+app.use( express.static( `${__dirname}/../build` ) );

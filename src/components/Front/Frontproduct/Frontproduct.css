@@ -1,0 +1,36 @@
+.Frontproduct {
+    border: 2px solid black;
+    width: 300px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-around;
+    margin: 5px 15px;
+    padding-top: 5px;
+
+}
+.front_product_container {
+    overflow: auto;
+}
+.front_product_container img {
+    width: 250px;
+    height: 250px;
+}
+
+.front_product_container h1 {
+    font-size: 30px;
+    margin: 0px 20px;
+    overflow: auto;
+}
+.front_product_container p {
+    margin: 7px
+}
+.front_product_buttons {
+    display: flex;
+    position: relative;
+	flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+    margin-bottom: 7px;
+}
