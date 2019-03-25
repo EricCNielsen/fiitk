@@ -25,7 +25,6 @@ class CreateUser extends Component{
 
     componentDidMount() {
         this.checkUser()
-        this.getImage()
     }
   
     checkUser = async () => { 
@@ -60,6 +59,7 @@ class CreateUser extends Component{
     }
 
     handleSubmit = async () => {
+        await this.getImage(this.state.user_image)
         let user ={
             username: this.state.username,
             email: this.state.email,
