@@ -12,6 +12,8 @@ import WeddingCakes from './components/Front/SubCakes/Wedding';
 import BirthdayCakes from './components/Front/SubCakes/Birthday';
 import SpecialCakes from './components/Front/SubCakes/SpecialOrder';
 import SimpleCupcakes from './components/Front/SubCupcakes/Simplecupcakes';
+import CreateUser from './components/Back/CreateUser/CreateUser'
+import ViewUsers from './components/Back/ViewUsers/ViewUsers'
 
 
 export default (
@@ -21,6 +23,8 @@ export default (
         <Route path="/specialtyitems" component={Specialty} />
         <Route path="/contact" component={Contact} />
         <Route path="/login" component={Login} />
+        <Route path="/dashboard/viewusers" component={ViewUsers} />
+        <Route path="/dashboard/createuser" component={CreateUser} />
         <Route path="/dashboard/edit" component={Edit} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/cakes/wedding" component={WeddingCakes} />

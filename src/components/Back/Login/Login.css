@@ -41,5 +41,7 @@
 	align-items: center;
     align-content: stretch;
     padding-top: 25px;
-    width: 60%
+    width: 80%;
+    margin-left:33px;
+    /* background:green;   */
     }

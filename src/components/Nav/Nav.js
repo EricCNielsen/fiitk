@@ -53,6 +53,7 @@ class Nav extends Component{
                 <div className="nav_menu_items">
                     <Link to='/dashboard'><button>Dashboard</button></Link>
                     <Link to ='/dashboard/edit'><button>Edit Items</button></Link>
+                    <Link to='/dashboard/createuser'><button>Create User</button></Link>
                 </div>
             </div>
             </div> 

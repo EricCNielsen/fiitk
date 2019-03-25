@@ -34,7 +34,6 @@ class WeddingCakes extends Component{
                     sub_category={product.sub_category}
                     product_desc={product.product_desc}
                     />
-                    
                 </div>
             )
         })

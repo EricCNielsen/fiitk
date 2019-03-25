@@ -44,8 +44,10 @@ massive(CONNECTION_STRING).then(db => {
 
 app.post('/auth/login', ctrl.login)
 app.post('/auth/register', ctrl.register)
+app.get('/auth/viewUsers', ctrl.getUsers)
 app.get('/auth/authorized', ctrl.authorized)
 app.post('/auth/logout', ctrl.logout)
+
 
 // // products controllers
 
@@ -61,6 +63,10 @@ app.get('/api/products/cupcakes', prod.getCupcakes)
 
 // app.post('/email/emailSignUp', email.signUp)
 // app.post('/email/checkEmail', email.checkEmail)
+
+// HP API
+
+
 
 // // aws end point
 
