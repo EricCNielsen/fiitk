@@ -154,6 +154,7 @@ handleSubmit = async () => {
     product_name: 'Item Name',
     product_desc: 'Item description'
   })
+  this.handleCancel()
   } catch(err) {
       alert('Something went wrong')
     }
@@ -271,8 +272,8 @@ const SPECIALTY_ITEMS = [
     value: 'Unique Desserts'
   },
   {
-    displayText: 'Savory Party Platers',
-    value: 'Savory Party Platers'
+    displayText: 'Savory Party Platters',
+    value: 'Savory Party Platters'
   },
   {
     displayText: 'Diet Friendly',

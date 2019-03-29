@@ -14,14 +14,19 @@ import SpecialCakes from './components/Front/SubCakes/SpecialOrder';
 import SimpleCupcakes from './components/Front/SubCupcakes/Simplecupcakes';
 import CreateUser from './components/Back/CreateUser/CreateUser'
 import ViewUsers from './components/Back/ViewUsers/ViewUsers'
+import CustomCupcakes from './components/Front/SubCupcakes/Customcupcakes';
+import UniqueDesserts from './components/Front/SubSpecialtyItems/UniqueDesserts'
+import SavoryPlatters from './components/Front/SubSpecialtyItems/SavoryPlatters'
+import DietFriendly from './components/Front/SubSpecialtyItems/DietFriendly'
 
 
 export default (
     <Switch>
         <Route exact path="/" component={Landing} />
-        <Route path="/cupcakes" component={Cupcakes} />
-        <Route path="/specialtyitems" component={Specialty} />
-        <Route path="/contact" component={Contact} />
+        <Route exact path="/cakes" component={Cakes} />
+        <Route exact path="/cupcakes" component={Cupcakes} />
+        <Route exact path="/specialty" component={Specialty} />
+        <Route exact path="/contact" component={Contact} />
         <Route path="/login" component={Login} />
         <Route path="/dashboard/viewusers" component={ViewUsers} />
         <Route path="/dashboard/createuser" component={CreateUser} />
@@ -30,8 +35,10 @@ export default (
         <Route path="/cakes/wedding" component={WeddingCakes} />
         <Route path="/cakes/birthday" component={BirthdayCakes} />
         <Route path="/cakes/special" component={SpecialCakes} />
-        <Route path="/cakes" component={Cakes} />
         <Route path="/cupcakes/simple" component={SimpleCupcakes} />
-        <Route path="/cupcakes" component={Cupcakes} />
+        <Route path="/cupcakes/custom" component={CustomCupcakes} />
+        <Route path="/specialty/unique" component={UniqueDesserts} />
+        <Route path="/specialty/savory" component={SavoryPlatters} />
+        <Route path="/specialty/diet" component={DietFriendly} />
     </Switch>
 )

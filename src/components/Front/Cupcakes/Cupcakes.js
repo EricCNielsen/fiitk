@@ -30,7 +30,7 @@ class Cupcakes extends Component{
                 <div className='Cupcakes'>
                     <div className='cupcake_thumbnails'>
                         <div>
-                            <Link to='/cakes/wedding'><img src={cupcakes1} alt='custom cupcake main' /><h1>Custom Cupcakes</h1></Link>
+                            <Link to='/cupcakes/custom'><img src={cupcakes1} alt='custom cupcake main' /><h1>Custom Cupcakes</h1></Link>
                             
                         </div>
                         <div>

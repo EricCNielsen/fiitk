@@ -58,6 +58,7 @@ app.delete('/api/product/:id', prod.deleteProduct)
 app.put('/api/updateProduct/:id', prod.updateProduct)
 app.get('/api/products/cakes', prod.getCakes)
 app.get('/api/products/cupcakes', prod.getCupcakes)
+app.get('/api/products/specialty', prod.getSpecialty)
 
 // // email controllers
 

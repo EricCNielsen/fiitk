@@ -1,0 +1,21 @@
+.ContactForm {
+    width:100%;
+}
+
+.ContactForm input {
+    padding: 20px;
+    margin-top: 15px;
+    width: 70%;
+}
+
+.ContactForm button {
+    margin-top: 20px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 2px solid black;
+    font-family: 'Bad Script', cursive;
+    font-size: 30px;
+    font-weight: bold;
+    background: none;
+}

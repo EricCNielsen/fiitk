@@ -1,0 +1,39 @@
+.Specialty {
+    /* background:blue; */
+    width: 98%;
+    margin: 5px;
+    height: 75vh;
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+	align-content: stretch;
+
+}
+.specialty_title{
+    font-size: 80px;
+    font-family: 'Bad Script', cursive;
+    text-decoration: underline;
+    margin-top:2vh
+}
+.specialty_thumbnails {
+    width: 90vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top:-10vh
+}
+.specialty_thumbnails img {
+    border: 7px solid black;
+    width:305px;
+    height: 380px;
+    margin: 20px;
+    border-radius: 50%;
+}
+.specialty_thumbnails h1{
+    font-size: 25px;
+    margin-top:-20px;
+    color: black
+}
+

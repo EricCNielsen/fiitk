@@ -4,8 +4,11 @@
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: stretch;
-  align-content: space-around;
-	margin:7px;
+	align-content: space-around;
+	margin-top: 80px;
+	margin-left: 10px;
+	margin-right: 10px;
 	height:fit-content;
 	padding-bottom: 7vh;
+
 }

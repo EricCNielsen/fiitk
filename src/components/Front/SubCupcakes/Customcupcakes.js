@@ -1,19 +1,19 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import Frontproduct from './../Frontproduct/Frontproduct'
-import './Frontproducts.css'
+import '../Frontproducts.css'
 
-class WeddingCakes extends Component{
+class CustomCupcakes extends Component{
     state= {
         products:[]
     }
 
     componentDidMount() {
-        this.getCakes()
+        this.getCupcakes()
     }
 
-    getCakes(){
-        axios.get('/api/products/cakes').then(res => {
+    getCupcakes(){
+        axios.get('/api/products/cupcakes').then(res => {
             this.setState({
                 products:res.data
             })
@@ -23,7 +23,7 @@ class WeddingCakes extends Component{
     render(){
         console.log(111, this.state.products)
         let mappedProducts = this.state.products
-        .filter(e => e.sub_category.includes("Wedding"))
+        .filter(e => e.sub_category.includes("Custom"))
         .map((product, i) => {
             return(
                 <div key={i}>
@@ -42,7 +42,7 @@ class WeddingCakes extends Component{
         return (
             <div>
                 <div>
-                    <h1>Wedding Cakes</h1> 
+                    <h1>Custom Cupcakes</h1> 
 
                 </div>
                 <div className="Frontproducts">
@@ -53,4 +53,4 @@ class WeddingCakes extends Component{
     }
 }
 
-export default WeddingCakes
+export default CustomCupcakes

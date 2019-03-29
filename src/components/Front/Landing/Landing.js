@@ -17,7 +17,7 @@ class Landing extends Component{
                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                         </ol>
-                        <div className="carousel-inner" style={{ borderRadius: '50%', border: '1px solid white'}}>
+                        <div className="carousel-inner" style={{ borderRadius: '50%'}}>
                             <div className="carousel-item active">
                             <img src={cake1} className="d-block w-100" alt="..." />
                             </div>

@@ -56,6 +56,13 @@ module.exports = {
             res.status(200).send(resp)
         }) .catch(err => res.status(500).send(err))
     },
+    getSpecialty: (req,res) => {
+        const db = req.app.get('db')
+        
+        db.front_end.get_specialty().then(resp => {
+            res.status(200).send(resp)
+        }).catch(err => res.status(500).send(err))
+    },
     updateProduct: (req, res) => {
         const db = req.app.get('db')
         const {image_url, category, sub_category, product_name, product_desc} = req.body

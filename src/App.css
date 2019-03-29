@@ -5,7 +5,10 @@
   margin: 0;
   box-sizing: border-box;
   position: relative;
-  min-height: 100vh
+  min-height: 100vh;
+  background-image: url('./assets/images/rehan-mallick-734287-unsplash.jpg');
+  background-size: 100% 100%;
+  background-color: rgb(136, 226, 226)
 }
 
 input[type=file] {

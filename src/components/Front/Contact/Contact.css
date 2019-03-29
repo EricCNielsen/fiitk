@@ -1,0 +1,25 @@
+.Contact {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+    align-content: stretch;
+    height: 50vh;
+    margin-top:5%;
+}
+
+.contact_title{
+    font-size: 80px;
+    font-family: 'Bad Script', cursive;
+    text-decoration: underline;
+    margin-top:2vh
+}
+
+.contact_line {
+    height: 50%;
+    width: 5px;
+    color: black;
+    position: absolute;
+    border: solid;
+
+}

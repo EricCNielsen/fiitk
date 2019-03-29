@@ -1,6 +1,6 @@
 .Nav {
-    background: rgb(224, 221, 221);
-    height: 7vh;
+    background: rgb(136, 226, 226);
+    height: 10vh;
     width: 100%;
     padding: 5px;
     display: flex;
@@ -20,6 +20,12 @@
     margin: 15px
 
 }
+.nav_brand img:hover {
+    border: 1px solid white;
+    border-radius: 50%;
+    position: absolute;
+    background-color: white
+}
 
 .nav_welcome_user{
     position: absolute;
@@ -34,5 +40,18 @@
     }
 
 .nav_menu_items button {
+    border-style: none;
+    background: none;
     margin-left: 5px;
+    font-family: 'Bad Script', cursive;
+    font-size: 30px
 }
+.nav_menu_items button:hover {
+    border-style: none;
+    background: none;
+    margin-left: 5px;
+    font-family: 'Bad Script', cursive;
+    font-size: 30px;
+    text-decoration: underline;
+}
+
